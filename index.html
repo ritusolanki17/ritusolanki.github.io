@@ -1,0 +1,1818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ritu Solanki — Luxury Hospitality Marketing | Director of Marketing & Communications</title>
+<meta name="description" content="Ritu Solanki is a luxury hospitality marketing strategist with 8+ years of experience across Anantara, IHG, and global startups. Specialising in brand storytelling, PR, digital campaigns, and pre-opening strategy.">
+<meta property="og:title" content="Ritu Solanki — Luxury Hospitality Marketing Strategist">
+<meta property="og:description" content="Director-level marketing professional with a luxury editorial point of view. Shaping how the world's finest hotels tell their story.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F5F0E8;
+    --ink: #0F0D0A;
+    --gold: #C9A96E;
+    --gold-light: #E8D5B0;
+    --warm-white: #FDFAF5;
+    --mid-gray: #8A8480;
+    --light-gray: #E8E3DB;
+    --accent-dark: #1A1714;
+    --serif: 'Playfair Display', Georgia, serif;
+    --cormorant: 'Cormorant Garamond', Georgia, serif;
+    --mono: 'DM Mono', monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--warm-white);
+    color: var(--ink);
+    font-family: var(--cormorant);
+    font-size: 18px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ──── LOADING SCREEN ──── */
+  #loader {
+    position: fixed; inset: 0;
+    background: var(--ink);
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 1rem;
+    z-index: 9999;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+  }
+  #loader.hidden { opacity: 0; visibility: hidden; }
+  .loader-name {
+    font-family: var(--serif);
+    color: var(--gold);
+    font-size: clamp(2rem, 6vw, 4rem);
+    letter-spacing: 0.25em;
+    font-style: italic;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 1s ease 0.3s forwards;
+  }
+  .loader-tagline {
+    font-family: var(--mono);
+    color: var(--mid-gray);
+    font-size: 0.65rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.8s forwards;
+  }
+  .loader-line {
+    width: 0; height: 1px;
+    background: var(--gold);
+    animation: expandLine 1.5s ease 1.2s forwards;
+    margin-top: 0.5rem;
+  }
+
+  /* ──── CURSOR ──── */
+  .cursor {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--gold);
+    position: fixed;
+    pointer-events: none;
+    z-index: 8888;
+    transition: transform 0.15s ease, opacity 0.2s;
+    mix-blend-mode: difference;
+  }
+  .cursor-ring {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--gold);
+    position: fixed;
+    pointer-events: none;
+    z-index: 8887;
+    transition: transform 0.35s ease, width 0.3s, height 0.3s, opacity 0.2s;
+    transform: translate(-14px, -14px);
+    opacity: 0.6;
+  }
+
+  /* ──── NAV ──── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 1000;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.5rem 4vw;
+    mix-blend-mode: difference;
+    transition: all 0.4s ease;
+  }
+  nav.scrolled { mix-blend-mode: normal; background: rgba(253,250,245,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--light-gray); }
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+    color: var(--warm-white);
+    text-decoration: none;
+    font-style: italic;
+    transition: color 0.3s;
+  }
+  nav.scrolled .nav-logo { color: var(--ink); }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  nav.scrolled .nav-links a { color: var(--mid-gray); }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* ──── HERO ──── */
+  #hero {
+    height: 100vh; min-height: 700px;
+    background: var(--ink);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-left {
+    display: flex; flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 5vw 8vh 8vw;
+    position: relative; z-index: 2;
+  }
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeUp 0.8s ease 1.8s forwards;
+  }
+  .hero-name {
+    font-family: var(--serif);
+    font-size: clamp(3.5rem, 7vw, 7rem);
+    font-weight: 900;
+    color: var(--warm-white);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    margin-bottom: 2rem;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 1s ease 2s forwards;
+  }
+  .hero-name em {
+    font-style: italic;
+    color: var(--gold);
+    font-weight: 400;
+    display: block;
+  }
+  .hero-tagline {
+    font-family: var(--cormorant);
+    font-size: clamp(1rem, 1.6vw, 1.3rem);
+    color: rgba(245,240,232,0.65);
+    max-width: 380px;
+    line-height: 1.6;
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 2.3s forwards;
+  }
+  .hero-ctas {
+    display: flex; gap: 1.5rem; align-items: center;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 2.6s forwards;
+  }
+  .btn-primary {
+    background: var(--gold);
+    color: var(--ink);
+    padding: 0.9rem 2.2rem;
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--warm-white); transform: translateY(-2px); }
+  .btn-ghost {
+    color: rgba(245,240,232,0.6);
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(201,169,110,0.4);
+    padding-bottom: 2px;
+    transition: all 0.3s;
+  }
+  .btn-ghost:hover { color: var(--gold); border-color: var(--gold); }
+
+  .hero-right {
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-img-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to right, var(--ink) 0%, rgba(15,13,10,0.4) 40%, transparent 70%);
+    z-index: 1;
+  }
+  .hero-photo {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    filter: grayscale(20%) contrast(1.05);
+    opacity: 0;
+    animation: fadeIn 1.5s ease 1.5s forwards;
+  }
+  .hero-stats {
+    position: absolute;
+    bottom: 8vh; right: 4vw;
+    z-index: 3;
+    display: flex; gap: 2rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 2.8s forwards;
+  }
+  .stat-item { text-align: right; }
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 2.5rem;
+    color: var(--warm-white);
+    font-weight: 700;
+    line-height: 1;
+  }
+  .stat-label {
+    font-family: var(--mono);
+    font-size: 0.55rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 0.25rem;
+  }
+
+  /* ──── MARQUEE ──── */
+  .marquee-bar {
+    background: var(--gold);
+    padding: 1rem 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .marquee-inner {
+    display: inline-flex;
+    animation: marquee 30s linear infinite;
+    gap: 0;
+  }
+  .marquee-item {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ink);
+    padding: 0 3rem;
+  }
+  .marquee-dot {
+    color: var(--ink);
+    opacity: 0.4;
+  }
+
+  /* ──── SECTIONS ──── */
+  section { padding: 10vh 8vw; }
+
+  .section-eyebrow {
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    font-weight: 700;
+    line-height: 1.05;
+    color: var(--ink);
+    margin-bottom: 2rem;
+  }
+  .section-title em { font-style: italic; color: var(--gold); font-weight: 400; }
+  .section-divider {
+    width: 60px; height: 1px;
+    background: var(--gold);
+    margin-bottom: 3rem;
+  }
+
+  /* ──── ABOUT ──── */
+  #about {
+    background: var(--cream);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8vw;
+    align-items: center;
+  }
+  .about-text p {
+    font-size: clamp(1rem, 1.4vw, 1.15rem);
+    color: #3A3530;
+    line-height: 1.9;
+    margin-bottom: 1.5rem;
+  }
+  .about-text p strong { color: var(--ink); font-weight: 600; }
+  .about-pull-quote {
+    font-family: var(--serif);
+    font-size: clamp(1.2rem, 2vw, 1.6rem);
+    font-style: italic;
+    color: var(--ink);
+    border-left: 3px solid var(--gold);
+    padding-left: 2rem;
+    margin: 2.5rem 0;
+    line-height: 1.5;
+  }
+  .about-right { position: relative; }
+  .about-photo-frame {
+    position: relative;
+    width: 100%;
+    padding-bottom: 120%;
+    overflow: hidden;
+  }
+  .about-photo-frame img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+  .about-photo-frame::after {
+    content: '';
+    position: absolute;
+    bottom: -1.5rem; right: -1.5rem;
+    width: 100%; height: 100%;
+    border: 1px solid var(--gold);
+    z-index: -1;
+  }
+  .about-tags {
+    display: flex; flex-wrap: wrap; gap: 0.6rem;
+    margin-top: 2rem;
+  }
+  .tag {
+    font-family: var(--mono);
+    font-size: 0.55rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    border: 1px solid var(--gold);
+    color: var(--mid-gray);
+    padding: 0.4rem 1rem;
+    transition: all 0.3s;
+  }
+  .tag:hover { background: var(--gold); color: var(--ink); cursor: default; }
+
+  /* ──── EXPERIENCE ──── */
+  #experience { background: var(--warm-white); }
+  .timeline {
+    position: relative;
+    margin-top: 3rem;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 1px;
+    background: var(--light-gray);
+  }
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 4rem;
+    margin-bottom: 5rem;
+    position: relative;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -5px; top: 8px;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--gold);
+    border: 2px solid var(--warm-white);
+    box-shadow: 0 0 0 1px var(--gold);
+  }
+  .timeline-meta { padding-left: 2.5rem; }
+  .timeline-date {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  .timeline-company {
+    font-family: var(--serif);
+    font-size: 0.9rem;
+    color: var(--mid-gray);
+    font-style: italic;
+  }
+  .timeline-role {
+    font-family: var(--serif);
+    font-size: clamp(1.2rem, 2vw, 1.6rem);
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+  .timeline-desc {
+    font-size: 1rem;
+    color: #5A5550;
+    line-height: 1.8;
+    margin-bottom: 1.2rem;
+  }
+  .timeline-highlights {
+    list-style: none;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .timeline-highlights li {
+    font-size: 0.9rem;
+    color: #4A4540;
+    padding-left: 1.5rem;
+    position: relative;
+    line-height: 1.6;
+  }
+  .timeline-highlights li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 0.8rem;
+  }
+  .timeline-badge {
+    display: inline-block;
+    background: rgba(201,169,110,0.12);
+    border: 1px solid var(--gold-light);
+    color: var(--gold);
+    font-family: var(--mono);
+    font-size: 0.55rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.8rem;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  /* ──── BRANDS ──── */
+  #brands {
+    background: var(--ink);
+    text-align: center;
+  }
+  #brands .section-title { color: var(--warm-white); }
+  #brands .section-eyebrow { color: var(--gold); }
+  .brands-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.08);
+    margin-top: 4rem;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .brand-card {
+    background: var(--ink);
+    padding: 4rem 3rem;
+    position: relative;
+    transition: background 0.4s;
+    cursor: default;
+  }
+  .brand-card:hover { background: #1A1714; }
+  .brand-card-category {
+    font-family: var(--mono);
+    font-size: 0.55rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+  .brand-card-name {
+    font-family: var(--serif);
+    font-size: clamp(1.2rem, 2vw, 1.7rem);
+    color: var(--warm-white);
+    font-style: italic;
+    margin-bottom: 0.8rem;
+  }
+  .brand-card-sub {
+    font-family: var(--cormorant);
+    font-size: 0.85rem;
+    color: var(--mid-gray);
+    line-height: 1.6;
+  }
+
+  /* ──── CAMPAIGNS ──── */
+  #campaigns { background: var(--cream); }
+  .campaigns-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-top: 4rem;
+  }
+  .campaign-card {
+    background: var(--warm-white);
+    padding: 3rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    border-bottom: 3px solid transparent;
+  }
+  .campaign-card:hover { border-bottom-color: var(--gold); transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.08); }
+  .campaign-card.featured {
+    background: var(--ink);
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .campaign-num {
+    font-family: var(--serif);
+    font-size: 5rem;
+    font-weight: 900;
+    color: rgba(201,169,110,0.15);
+    line-height: 1;
+    margin-bottom: -1rem;
+  }
+  .campaign-title {
+    font-family: var(--serif);
+    font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 0.8rem;
+    line-height: 1.2;
+  }
+  .campaign-card.featured .campaign-title { color: var(--warm-white); }
+  .campaign-desc {
+    font-size: 0.95rem;
+    color: var(--mid-gray);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+  .campaign-card.featured .campaign-desc { color: rgba(245,240,232,0.6); }
+  .campaign-metric {
+    font-family: var(--serif);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .campaign-metric-label {
+    font-family: var(--mono);
+    font-size: 0.55rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--mid-gray);
+    margin-top: 0.25rem;
+  }
+  .campaign-metrics { display: flex; gap: 3rem; margin-top: 1.5rem; }
+  .featured-left { padding: 3rem; }
+  .featured-right { padding: 3rem 3rem 3rem 0; }
+
+  /* ──── SKILLS ──── */
+  #skills { background: var(--warm-white); }
+  .skills-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    margin-top: 3rem;
+  }
+  .skill-category-title {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid var(--light-gray);
+  }
+  .skill-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid rgba(232,227,219,0.5);
+  }
+  .skill-name {
+    font-family: var(--cormorant);
+    font-size: 1rem;
+    color: var(--ink);
+  }
+  .skill-bar {
+    width: 120px; height: 2px;
+    background: var(--light-gray);
+    position: relative;
+  }
+  .skill-fill {
+    position: absolute; left: 0; top: 0; height: 100%;
+    background: var(--gold);
+    transition: width 1.5s ease;
+    width: 0;
+  }
+
+  /* ──── PHILOSOPHY ──── */
+  #philosophy {
+    background: var(--ink);
+    text-align: center;
+    padding: 14vh 8vw;
+  }
+  #philosophy .section-title { color: var(--warm-white); }
+  #philosophy .section-eyebrow, #philosophy .section-divider { margin-left: auto; margin-right: auto; }
+  .philosophy-quote {
+    font-family: var(--serif);
+    font-size: clamp(1.5rem, 3.5vw, 3rem);
+    font-style: italic;
+    color: var(--warm-white);
+    max-width: 800px;
+    margin: 2rem auto 0;
+    line-height: 1.4;
+  }
+  .philosophy-quote span { color: var(--gold); }
+  .philosophy-body {
+    font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+    color: rgba(245,240,232,0.6);
+    max-width: 600px;
+    margin: 2.5rem auto 0;
+    line-height: 1.8;
+  }
+  .philosophy-pillars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 6rem;
+    background: rgba(255,255,255,0.06);
+  }
+  .pillar {
+    background: var(--ink);
+    padding: 3rem 2.5rem;
+    text-align: left;
+    transition: background 0.3s;
+  }
+  .pillar:hover { background: #1A1714; }
+  .pillar-num {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+  }
+  .pillar-title {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    color: var(--warm-white);
+    margin-bottom: 0.8rem;
+    font-style: italic;
+  }
+  .pillar-text {
+    font-size: 0.85rem;
+    color: rgba(245,240,232,0.5);
+    line-height: 1.7;
+  }
+
+  /* ──── MEDIA & PR ──── */
+  #media { background: var(--cream); }
+  .media-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .media-card {
+    background: var(--warm-white);
+    padding: 2rem;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s;
+  }
+  .media-card:hover { border-bottom-color: var(--gold); }
+  .media-outlet {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+  .media-region {
+    font-family: var(--mono);
+    font-size: 0.55rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+  .media-desc {
+    font-size: 0.85rem;
+    color: var(--mid-gray);
+    line-height: 1.6;
+  }
+  .media-stat-bar {
+    margin-top: 4rem;
+    background: var(--ink);
+    padding: 4rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    text-align: center;
+  }
+  .media-stat-num {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .media-stat-label {
+    font-family: var(--mono);
+    font-size: 0.55rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.5);
+    margin-top: 0.5rem;
+    line-height: 1.5;
+  }
+
+  /* ──── BOOK REVIEWS ──── */
+  .review-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .review-card {
+    display: block;
+    text-decoration: none;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(201,169,110,0.15);
+    border-bottom: 3px solid transparent;
+    padding: 2.5rem 2rem;
+    transition: all 0.3s ease;
+  }
+  .review-card:hover {
+    border-bottom-color: var(--gold);
+    background: rgba(255,255,255,0.07);
+    transform: translateY(-4px);
+  }
+  .review-card--coming { cursor: default; }
+  .review-card--coming:hover { transform: none; border-bottom-color: transparent; background: rgba(255,255,255,0.04); }
+  .review-genre {
+    font-family: var(--mono);
+    font-size: 0.5rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+  .review-title {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    color: var(--warm-white);
+    margin-bottom: 0.4rem;
+    line-height: 1.3;
+  }
+  .review-author {
+    font-family: var(--mono);
+    font-size: 0.55rem;
+    letter-spacing: 0.15em;
+    color: var(--mid-gray);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+  }
+  .review-excerpt {
+    font-size: 0.9rem;
+    color: rgba(245,240,232,0.45);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+  .review-link {
+    font-family: var(--mono);
+    font-size: 0.5rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border-bottom: 1px solid rgba(201,169,110,0.3);
+    padding-bottom: 1px;
+  }
+
+  /* ──── PRESS GRID ──── */
+  .press-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+  }
+  .press-card {
+    display: block;
+    text-decoration: none;
+    background: var(--warm-white);
+    border: 1px solid var(--light-gray);
+    border-bottom: 3px solid transparent;
+    padding: 1.8rem 1.5rem;
+    transition: all 0.3s ease;
+  }
+  .press-card:hover {
+    border-bottom-color: var(--gold);
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.07);
+  }
+  .press-card--insta { border-left: 3px solid rgba(201,169,110,0.25); }
+  .press-region {
+    font-family: var(--mono);
+    font-size: 0.5rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.6rem;
+  }
+  .press-outlet {
+    font-family: var(--serif);
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--ink);
+    margin-bottom: 0.6rem;
+    line-height: 1.3;
+  }
+  .press-desc {
+    font-size: 0.8rem;
+    color: var(--mid-gray);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+  .press-link {
+    font-family: var(--mono);
+    font-size: 0.5rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border-bottom: 1px solid rgba(201,169,110,0.3);
+    padding-bottom: 1px;
+  }
+
+  /* ──── CONTACT ──── */
+  #contact {
+    background: var(--ink);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 80vh;
+    align-items: stretch;
+  }
+  .contact-left {
+    padding: 10vh 6vw 10vh 8vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-right: 1px solid rgba(255,255,255,0.08);
+  }
+  .contact-right {
+    padding: 10vh 8vw 10vh 6vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .contact-title {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 700;
+    color: var(--warm-white);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+  .contact-title em { font-style: italic; color: var(--gold); font-weight: 400; }
+  .contact-sub {
+    font-size: 1rem;
+    color: rgba(245,240,232,0.5);
+    line-height: 1.8;
+    margin-bottom: 3rem;
+  }
+  .contact-detail {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .contact-detail-label {
+    font-family: var(--mono);
+    font-size: 0.55rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    min-width: 80px;
+    padding-top: 0.1rem;
+  }
+  .contact-detail-value {
+    font-family: var(--cormorant);
+    font-size: 1rem;
+    color: var(--warm-white);
+    line-height: 1.5;
+  }
+  .contact-detail-value a { color: inherit; text-decoration: none; border-bottom: 1px solid rgba(201,169,110,0.3); transition: border-color 0.3s; }
+  .contact-detail-value a:hover { border-color: var(--gold); }
+  .contact-form { display: flex; flex-direction: column; gap: 1.5rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+  .form-label {
+    font-family: var(--mono);
+    font-size: 0.55rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .form-input, .form-textarea {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    color: var(--warm-white);
+    font-family: var(--cormorant);
+    font-size: 1rem;
+    padding: 0.8rem 0;
+    outline: none;
+    transition: border-color 0.3s;
+    width: 100%;
+  }
+  .form-input:focus, .form-textarea:focus { border-bottom-color: var(--gold); }
+  .form-input::placeholder, .form-textarea::placeholder { color: rgba(245,240,232,0.25); }
+  .form-textarea { resize: none; min-height: 100px; }
+  .form-submit {
+    background: var(--gold);
+    color: var(--ink);
+    border: none;
+    padding: 1rem 2.5rem;
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+    align-self: flex-start;
+    margin-top: 0.5rem;
+  }
+  .form-submit:hover { background: var(--warm-white); transform: translateY(-2px); }
+
+  /* ──── FOOTER ──── */
+  footer {
+    background: var(--accent-dark);
+    padding: 3rem 8vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .footer-logo {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--gold);
+    text-decoration: none;
+  }
+  .footer-copy {
+    font-family: var(--mono);
+    font-size: 0.55rem;
+    letter-spacing: 0.2em;
+    color: rgba(245,240,232,0.3);
+    text-transform: uppercase;
+  }
+  .footer-links { display: flex; gap: 2rem; }
+  .footer-links a {
+    font-family: var(--mono);
+    font-size: 0.55rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.4);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .footer-links a:hover { color: var(--gold); }
+
+  /* ──── ANIMATIONS ──── */
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    to { opacity: 1; }
+  }
+  @keyframes expandLine {
+    to { width: 200px; }
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ──── MOBILE ──── */
+  @media (max-width: 900px) {
+    html, body { overflow-x: hidden; max-width: 100vw; }
+    section { padding: 8vh 5vw; }
+
+    #hero { grid-template-columns: 1fr; }
+    .hero-right { position: absolute; inset: 0; z-index: 0; }
+    .hero-img-overlay { background: linear-gradient(to top, var(--ink) 40%, rgba(15,13,10,0.7) 80%, rgba(15,13,10,0.5)); }
+    .hero-left { z-index: 2; justify-content: flex-end; padding: 0 6vw 10vh; }
+    .hero-stats { display: none; }
+    .hero-tagline { max-width: 100%; }
+
+    #about { grid-template-columns: 1fr; }
+    .about-right { display: none; }
+
+    .timeline-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    .timeline-meta { padding-left: 2rem; }
+    .timeline-role { font-size: 1.2rem; }
+
+    .brands-grid { grid-template-columns: 1fr; }
+    .brand-card { padding: 2.5rem 1.5rem; }
+
+    .press-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .review-grid { grid-template-columns: 1fr; }
+    .about-photos { grid-template-columns: 1fr 1fr; }
+    .campaigns-grid { grid-template-columns: 1fr; gap: 2px; }
+    .campaign-card { padding: 2rem 1.5rem; overflow: hidden; }
+    .campaign-card.featured {
+      grid-column: auto;
+      grid-template-columns: 1fr;
+      overflow: hidden;
+    }
+    .featured-left { padding: 2rem 1.5rem; }
+    .featured-right { padding: 0 1.5rem 2rem; }
+    .campaign-metrics { flex-wrap: wrap; gap: 1.5rem; }
+    .campaign-desc { word-break: break-word; overflow-wrap: break-word; }
+    .campaign-title { word-break: break-word; }
+
+    .skills-layout { grid-template-columns: 1fr; gap: 2rem; }
+    .skill-bar { width: 80px; }
+
+    .philosophy-pillars { grid-template-columns: 1fr; }
+    .pillar { padding: 2rem 1.5rem; }
+
+    .media-grid { grid-template-columns: 1fr 1fr; }
+    .media-stat-bar { grid-template-columns: 1fr 1fr; padding: 2rem 1.5rem; }
+
+    #contact { grid-template-columns: 1fr; }
+    .contact-left { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); padding: 6vh 5vw; }
+    .contact-right { padding: 6vh 5vw; }
+    .contact-title { font-size: clamp(1.6rem, 7vw, 2.5rem); }
+
+    footer { flex-direction: column; gap: 1.5rem; text-align: center; }
+    .footer-links { flex-wrap: wrap; justify-content: center; }
+    nav { display: none; }
+
+    .marquee-item { padding: 0 1.5rem; font-size: 0.55rem; }
+  }
+
+  @media (max-width: 480px) {
+    section { padding: 7vh 5vw; }
+    .media-grid { grid-template-columns: 1fr; }
+    .media-stat-bar { grid-template-columns: 1fr 1fr; }
+    .hero-name { font-size: 3rem; }
+    .section-title { font-size: 2rem; }
+    .campaign-card { padding: 1.5rem; }
+    .featured-left { padding: 1.5rem; }
+    .featured-right { padding: 0 1.5rem 1.5rem; }
+    .timeline-badge { font-size: 0.45rem; padding: 0.25rem 0.5rem; }
+    .about-pull-quote { padding-left: 1rem; font-size: 1.1rem; }
+    .campaign-num { font-size: 3.5rem; }
+    .press-grid { grid-template-columns: 1fr; gap: 0.8rem; }
+    .media-stat-bar { grid-template-columns: 1fr 1fr; padding: 1.5rem; gap: 1rem; }
+    .media-stat-num { font-size: 2rem; }
+    .contact-detail { gap: 1rem; flex-wrap: wrap; }
+    .contact-detail-label { min-width: 60px; }
+    .philosophy-quote { font-size: 1.3rem; }
+    .about-photos { grid-template-columns: 1fr; }
+    .about-photos .about-photo-frame:first-child { margin-top: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Loading Screen -->
+<div id="loader">
+  <p class="loader-name">Ritu Solanki</p>
+  <div class="loader-line"></div>
+  <p class="loader-tagline">Luxury Hospitality · Brand Strategy · Storytelling</p>
+</div>
+
+<!-- Custom Cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- Navigation -->
+<nav id="nav">
+  <a href="#hero" class="nav-logo">Ritu Solanki</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#campaigns">Campaigns</a></li>
+    <li><a href="#media">Media & PR</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact">Connect</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Luxury Hospitality · Marketing & Communications</p>
+    <h1 class="hero-name">Ritu<em>Solanki</em></h1>
+    <p class="hero-tagline">Shaping how the world's finest hotels tell their story. From pre-opening strategy to global media campaigns — built for the front pages of luxury.</p>
+    <div class="hero-ctas">
+      <a href="#contact" class="btn-primary">Let's Connect</a>
+      <a href="Ritu_Solanki_Resume_Marketing.pdf" download class="btn-ghost">Download CV</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img-overlay"></div>
+    <img src="Ritu Solanki.png" alt="Ritu Solanki" class="hero-photo">
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">8+</div>
+        <div class="stat-label">Years in Luxury</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">27+</div>
+        <div class="stat-label">PR Placements</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">3.2x</div>
+        <div class="stat-label">ROAS Achieved</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Marquee -->
+<div class="marquee-bar">
+  <div class="marquee-inner">
+    <span class="marquee-item">Anantara Jewel Bagh Jaipur</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">Holiday Inn by IHG</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">Luxury Brand Storytelling</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">Global Media Relations</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">Digital Marketing Strategy</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">Pre-Opening Expert</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">Influencer Marketing</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">PR & Reputation Management</span><span class="marquee-dot">·</span>
+    <!-- repeat for seamless loop -->
+    <span class="marquee-item">Anantara Jewel Bagh Jaipur</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">Holiday Inn by IHG</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">Luxury Brand Storytelling</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">Global Media Relations</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">Digital Marketing Strategy</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">Pre-Opening Expert</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">Influencer Marketing</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">PR & Reputation Management</span><span class="marquee-dot">·</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-text reveal">
+    <p class="section-eyebrow">About Me</p>
+    <h2 class="section-title">Where fashion<br>meets <em>luxury</em><br>hospitality.</h2>
+    <div class="section-divider"></div>
+    <p>I'm a luxury hospitality marketing strategist with <strong>8+ years</strong> of experience turning hotels into stories the world wants to read. My career spans India's most aspirational hotel brands, global tech startups, and the beautiful chaos of pre-opening strategy — all while holding the solo MarCom seat with Director-level scope.</p>
+    <div class="about-pull-quote">"I don't just market hotels. I build the mythology around them."</div>
+    <p>Armed with a <strong>Master's in Fashion Management from NIFT</strong> and a commerce foundation from Shri Ram College of Commerce, New Delhi, my edge is where editorial sensibility meets marketing science. The result? Campaigns that feel like Vogue spreads and perform like boardroom decks.</p>
+    <p>Currently shaping the narrative of <strong>India's first Anantara property</strong> in Jaipur — and ready for my next great challenge wherever luxury hospitality meets exceptional storytelling.</p>
+    <div class="about-tags">
+      <span class="tag">Pre-Opening Strategy</span>
+      <span class="tag">Media Relations</span>
+      <span class="tag">Brand Guardianship</span>
+      <span class="tag">NIFT Alumni</span>
+      <span class="tag">Luxury Lifestyle</span>
+      <span class="tag">Storytelling</span>
+      <span class="tag">Digital Strategy</span>
+      <span class="tag">Open to Opportunities</span>
+    </div>
+  </div>
+  <div class="about-right reveal">
+    <div class="about-photo-frame">
+      <img src="Ritu_Solanki.png" alt="Ritu Solanki — Luxury Hospitality Marketing">
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="reveal">
+    <p class="section-eyebrow">Career Journey</p>
+    <h2 class="section-title">Eight years of<br><em>crafting</em> luxury.</h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="timeline">
+
+    <div class="timeline-item reveal">
+      <div class="timeline-meta">
+        <span class="timeline-date">Nov 2024 — Present</span>
+        <p class="timeline-company">Minor Hotels · Anantara Collection</p>
+      </div>
+      <div class="timeline-content">
+        <h3 class="timeline-role">Marketing & Communications Manager</h3>
+        <p style="font-size:0.8rem; color: var(--gold); font-family: var(--mono); letter-spacing:0.15em; margin-bottom:0.8rem;">Anantara Jewel Bagh Jaipur — India's First Anantara</p>
+        <p class="timeline-desc">Joined the pre-opening core team of India's inaugural Anantara property — a milestone that demanded Director-level ownership of the entire MarCom function from day zero. Building brand mythology from scratch, in one of India's most storied cities.</p>
+        <ul class="timeline-highlights">
+          <li>Led pre-opening communications positioning the hotel as a global luxury destination aligned with international brand standards</li>
+          <li>Secured international media coverage with 27+ placements across 6 countries</li>
+          <li>Delivered 3.2x ROAS through integrated PR, digital, and influencer campaigns</li>
+          <li>Drove digital strategy including SEO, SEM, paid ads, and social media — increasing qualified traffic and lead generation</li>
+          <li>Hosted FAM trips for top-tier media and acted as official brand spokesperson</li>
+          <li>Instrumental in building the Anantara Jewel Luxe Club membership programme from inception — bringing multiple Anantara properties on board to create a richer, more compelling guest loyalty experience</li>
+          <li>Curated high-profile fashion events, brand collaborations, and cultural activations for the property — including partnerships with designers like Ridhi Mehra, Anita Dongre, Arita Mehta, and a Manifest cover shoot</li>
+          <li>Hosted Fashion Connect (historically held at Fairmont and Rambagh Palace) at Anantara Jewel Bagh — achieving 1.4M+ influencer reach and signalling the property's arrival in Jaipur's luxury cultural scene</li>
+        </ul>
+        <div style="margin-top:1.5rem;">
+          <span class="timeline-badge">Pre-Opening</span>
+          <span class="timeline-badge">Luxury Brand</span>
+          <span class="timeline-badge">Global Media</span>
+          <span class="timeline-badge">3.2x ROAS</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-item reveal">
+      <div class="timeline-meta">
+        <span class="timeline-date">Sep 2023 — Nov 2024</span>
+        <p class="timeline-company">IHG Hotels & Resorts</p>
+      </div>
+      <div class="timeline-content">
+        <h3 class="timeline-role">Marketing & Communications Manager</h3>
+        <p style="font-size:0.8rem; color: var(--gold); font-family: var(--mono); letter-spacing:0.15em; margin-bottom:0.8rem;">Holiday Inn Jaipur City Centre</p>
+        <p class="timeline-desc">Led the end-to-end marketing and communications function for one of IHG's key Jaipur properties — delivering revenue-focused campaigns, digital strategy, and brand compliance across all touchpoints.</p>
+        <ul class="timeline-highlights">
+          <li>Drove revenue-focused marketing campaigns, growing market share and online presence</li>
+          <li>Executed full brand compliance across all marketing materials and digital platforms</li>
+          <li>Built and managed external agency relationships for cohesive campaign execution</li>
+          <li>Leveraged analytics to continuously optimise digital performance</li>
+        </ul>
+        <div style="margin-top:1.5rem;">
+          <span class="timeline-badge">IHG Portfolio</span>
+          <span class="timeline-badge">Digital Marketing</span>
+          <span class="timeline-badge">Brand Standards</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-item reveal">
+      <div class="timeline-meta">
+        <span class="timeline-date">Apr 2022 — Sep 2023</span>
+        <p class="timeline-company">Tech Startup</p>
+      </div>
+      <div class="timeline-content">
+        <h3 class="timeline-role">Growth Manager</h3>
+        <p style="font-size:0.8rem; color: var(--gold); font-family: var(--mono); letter-spacing:0.15em; margin-bottom:0.8rem;">Ohi App, Jaipur</p>
+        <p class="timeline-desc">Brought the luxury brand lens to the startup world — leading growth through influencer-first campaigns, strategic ad deals, and social media activations that drove both downloads and community.</p>
+        <ul class="timeline-highlights">
+          <li>Led influencer marketing strategy to drive app downloads and sustained engagement</li>
+          <li>Negotiated ad and sponsorship partnerships, maximising cost efficiency and ROI</li>
+          <li>Managed multi-channel campaigns across traditional and social media platforms</li>
+        </ul>
+        <div style="margin-top:1.5rem;">
+          <span class="timeline-badge">Influencer Marketing</span>
+          <span class="timeline-badge">Growth Strategy</span>
+          <span class="timeline-badge">Performance Marketing</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-item reveal">
+      <div class="timeline-meta">
+        <span class="timeline-date">Mar 2019 — Mar 2022</span>
+        <p class="timeline-company">Independent Consultancy</p>
+      </div>
+      <div class="timeline-content">
+        <h3 class="timeline-role">Marketing Consultant</h3>
+        <p style="font-size:0.8rem; color: var(--gold); font-family: var(--mono); letter-spacing:0.15em; margin-bottom:0.8rem;">Multiple Brands · Wellness, Lifestyle & Fitness</p>
+        <p class="timeline-desc">Ran an independent marketing consultancy working across wellness, lifestyle, and fitness brands — including founding and running A FitFam, a female fitness community. Delivered end-to-end marketing strategy, creative direction, PR, and brand building for multiple clients simultaneously.</p>
+        <ul class="timeline-highlights">
+          <li>Developed and executed full marketing strategies for wellness and lifestyle brands across digital and traditional channels</li>
+          <li>Led shoot planning, creative direction, and content production for brand campaigns</li>
+          <li>Built PR strategies, secured media placements, and managed influencer partnerships</li>
+          <li>Turned influencers into genuine brand evangelists, driving community growth and sustained engagement</li>
+          <li>Negotiated brand sponsorships and ad deals with strong ROI outcomes</li>
+          <li>Founded and led A FitFam — a female-first fitness club — building its brand, community, and marketing from scratch</li>
+        </ul>
+        <div style="margin-top:1.5rem;">
+          <span class="timeline-badge">Brand Strategy</span>
+          <span class="timeline-badge">PR & Media</span>
+          <span class="timeline-badge">Shoot Direction</span>
+          <span class="timeline-badge">Influencer Marketing</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- MEDIA & PR -->
+<section id="media">
+  <div class="reveal">
+    <p class="section-eyebrow">Media & PR Footprint</p>
+    <h2 class="section-title">Coverage that<br><em>travels.</em></h2>
+    <div class="section-divider"></div>
+    <p style="font-size:1rem; color:var(--mid-gray); max-width:600px; line-height:1.8; margin-bottom:3rem;">From Condé Nast Traveller to Luxury Lifestyle Magazine UK, the work speaks for itself. Click any feature to read the full story.</p>
+  </div>
+
+  <div class="press-grid reveal">
+
+    <a href="https://www.cntraveller.in/hotels/jaipur/anantara-jewel-bagh-hotel-jaipur/" target="_blank" rel="noopener" class="press-card">
+      <div class="press-card-inner">
+        <p class="press-region">India · Luxury Travel</p>
+        <h4 class="press-outlet">Condé Nast Traveller India</h4>
+        <p class="press-desc">Hotel feature — Anantara Jewel Bagh Jaipur listed as a top luxury stay</p>
+        <span class="press-link">Read Feature ↗</span>
+      </div>
+    </a>
+
+    <a href="https://www.cntraveller.in/gallery/the-best-hotels-in-and-around-jaipur-pink-city-hawa-mahal-city-palace/" target="_blank" rel="noopener" class="press-card">
+      <div class="press-card-inner">
+        <p class="press-region">India · Luxury Travel</p>
+        <h4 class="press-outlet">Condé Nast Traveller India</h4>
+        <p class="press-desc">Best Hotels In & Around Jaipur — Pink City edit featuring the property</p>
+        <span class="press-link">Read Feature ↗</span>
+      </div>
+    </a>
+
+    <a href="https://www.outlooktraveller.com/stay/how-anantara-jewel-bagh-jaipur-made-me-feel-like-a-princess" target="_blank" rel="noopener" class="press-card">
+      <div class="press-card-inner">
+        <p class="press-region">India · Travel</p>
+        <h4 class="press-outlet">Outlook Traveller</h4>
+        <p class="press-desc">"How Anantara Jewel Bagh Jaipur Made Me Feel Like a Princess" — full experiential feature</p>
+        <span class="press-link">Read Feature ↗</span>
+      </div>
+    </a>
+
+    <a href="https://www.gqindia.com/content/6-finest-luxury-dining-experiences-across-india-sheesh-mahal-pillars-esphahan-and-others" target="_blank" rel="noopener" class="press-card">
+      <div class="press-card-inner">
+        <p class="press-region">India · Style & Luxury</p>
+        <h4 class="press-outlet">GQ India</h4>
+        <p class="press-desc">6 Finest Luxury Dining Experiences Across India — Anantara Jewel Bagh featured</p>
+        <span class="press-link">Read Feature ↗</span>
+      </div>
+    </a>
+
+    <a href="https://www.thepeakmagazine.com.sg/lifestyle/anantara-bagh-jaipur-debut" target="_blank" rel="noopener" class="press-card">
+      <div class="press-card-inner">
+        <p class="press-region">Singapore · Luxury</p>
+        <h4 class="press-outlet">The Peak Magazine Singapore</h4>
+        <p class="press-desc">Anantara Jewel Bagh Jaipur Debut — featured in Singapore's premier luxury lifestyle title</p>
+        <span class="press-link">Read Feature ↗</span>
+      </div>
+    </a>
+
+    <a href="https://www.luxurylifestylemag.co.uk/travel/enjoying-the-best-of-anantara-jewel-bagh-jaipur-in-india/" target="_blank" rel="noopener" class="press-card">
+      <div class="press-card-inner">
+        <p class="press-region">UK · Luxury</p>
+        <h4 class="press-outlet">Luxury Lifestyle Magazine</h4>
+        <p class="press-desc">Enjoying the best of Anantara Jewel Bagh Jaipur — international UK feature</p>
+        <span class="press-link">Read Feature ↗</span>
+      </div>
+    </a>
+
+    <a href="https://currentmoodmag.com/2025/07/cm-review-anantara-jewel-bagh-jaipur/" target="_blank" rel="noopener" class="press-card">
+      <div class="press-card-inner">
+        <p class="press-region">Lifestyle · Review</p>
+        <h4 class="press-outlet">Current Mood Magazine</h4>
+        <p class="press-desc">In-depth property review — Anantara Jewel Bagh Jaipur</p>
+        <span class="press-link">Read Feature ↗</span>
+      </div>
+    </a>
+
+    <a href="https://currentmoodmag.com/2025/08/cm-wedding-venue-anantara-jewel-bagh-jaipur/" target="_blank" rel="noopener" class="press-card">
+      <div class="press-card-inner">
+        <p class="press-region">Lifestyle · Weddings</p>
+        <h4 class="press-outlet">Current Mood Magazine</h4>
+        <p class="press-desc">Wedding venue feature — Anantara Jewel Bagh as Jaipur's premier wedding destination</p>
+        <span class="press-link">Read Feature ↗</span>
+      </div>
+    </a>
+
+    <a href="https://currentmoodmag.com/2026/01/padharo-best-hotels-and-cafes-in-jaipur/" target="_blank" rel="noopener" class="press-card">
+      <div class="press-card-inner">
+        <p class="press-region">Lifestyle · Roundup</p>
+        <h4 class="press-outlet">Current Mood Magazine</h4>
+        <p class="press-desc">Best Hotels & Cafes in Jaipur — Padharo edit featuring the property</p>
+        <span class="press-link">Read Feature ↗</span>
+      </div>
+    </a>
+
+    <a href="https://ellegourmet.in/food/kitchen-soundtracks-what-are-chefs-listening-to-while-they-are-cooking-up-your-dinner-9336993" target="_blank" rel="noopener" class="press-card">
+      <div class="press-card-inner">
+        <p class="press-region">India · Food & Lifestyle</p>
+        <h4 class="press-outlet">Elle Gourmet India</h4>
+        <p class="press-desc">Kitchen Soundtracks — Anantara Jewel Bagh's chef featured in Elle Gourmet editorial</p>
+        <span class="press-link">Read Feature ↗</span>
+      </div>
+    </a>
+
+    <a href="https://lbb.in/delhi/anantara-jewel-bagh-jaipur/" target="_blank" rel="noopener" class="press-card">
+      <div class="press-card-inner">
+        <p class="press-region">India · Digital</p>
+        <h4 class="press-outlet">Little Black Book</h4>
+        <p class="press-desc">LBB feature — Anantara Jewel Bagh on India's most-read city guide platform</p>
+        <span class="press-link">Read Feature ↗</span>
+      </div>
+    </a>
+
+    <a href="https://www.fortuneindia.com/lifestyle/how-indian-weddings-are-redefining-opulence/128760" target="_blank" rel="noopener" class="press-card">
+      <div class="press-card-inner">
+        <p class="press-region">India · Business & Luxury</p>
+        <h4 class="press-outlet">Fortune India</h4>
+        <p class="press-desc">How Indian Weddings Are Redefining Opulence — property featured in premium business media</p>
+        <span class="press-link">Read Feature ↗</span>
+      </div>
+    </a>
+
+    <a href="https://travellersworldonline.com/travellers-world-online-magazine-june-july-2025/" target="_blank" rel="noopener" class="press-card">
+      <div class="press-card-inner">
+        <p class="press-region">International · Travel</p>
+        <h4 class="press-outlet">Travellers World Online</h4>
+        <p class="press-desc">June–July 2025 magazine feature — Anantara Jewel Bagh Jaipur</p>
+        <span class="press-link">Read Feature ↗</span>
+      </div>
+    </a>
+
+    <a href="https://www.infinityinklings.com/p/72-hours-in-the-pink-city" target="_blank" rel="noopener" class="press-card">
+      <div class="press-card-inner">
+        <p class="press-region">Travel · Editorial</p>
+        <h4 class="press-outlet">Infinity Inklings</h4>
+        <p class="press-desc">72 Hours in the Pink City — Jaipur travel guide featuring Anantara Jewel Bagh</p>
+        <span class="press-link">Read Feature ↗</span>
+      </div>
+    </a>
+
+    <a href="https://www.newstalkzb.co.nz/on-air/saturday-morning-with-jack-tame/audio/mike-yardley-might-and-magic-of-jaipur-with-wendy-wu-tours/" target="_blank" rel="noopener" class="press-card">
+      <div class="press-card-inner">
+        <p class="press-region">New Zealand · Radio</p>
+        <h4 class="press-outlet">Newstalk ZB · New Zealand</h4>
+        <p class="press-desc">Might & Magic of Jaipur — Anantara Jewel Bagh featured on New Zealand national radio</p>
+        <span class="press-link">Listen ↗</span>
+      </div>
+    </a>
+
+    <a href="https://www.instagram.com/p/DTSTfhniDA9/" target="_blank" rel="noopener" class="press-card press-card--insta">
+      <div class="press-card-inner">
+        <p class="press-region">Instagram · Manifest × Manish Malhotra</p>
+        <h4 class="press-outlet">Manifest Magazine</h4>
+        <p class="press-desc">Manifest digital cover page — Manish Malhotra shoot tagging Anantara Jewel Bagh Jaipur</p>
+        <span class="press-link">View Post ↗</span>
+      </div>
+    </a>
+
+    <a href="https://www.instagram.com/p/DMsTNRGoCd9/" target="_blank" rel="noopener" class="press-card press-card--insta">
+      <div class="press-card-inner">
+        <p class="press-region">Instagram · Influencer</p>
+        <h4 class="press-outlet">Instagram Feature</h4>
+        <p class="press-desc">High-engagement influencer post — Anantara Jewel Bagh Jaipur</p>
+        <span class="press-link">View Post ↗</span>
+      </div>
+    </a>
+
+    <a href="https://www.instagram.com/p/DKabXMtSfqc/" target="_blank" rel="noopener" class="press-card press-card--insta">
+      <div class="press-card-inner">
+        <p class="press-region">Instagram · Content</p>
+        <h4 class="press-outlet">Instagram Feature</h4>
+        <p class="press-desc">Property content collaboration — Anantara Jewel Bagh Jaipur</p>
+        <span class="press-link">View Post ↗</span>
+      </div>
+    </a>
+
+  </div>
+
+  <div class="media-stat-bar reveal">
+    <div>
+      <div class="media-stat-num">27+</div>
+      <div class="media-stat-label">International Placements</div>
+    </div>
+    <div>
+      <div class="media-stat-num">6</div>
+      <div class="media-stat-label">Countries Reached</div>
+    </div>
+    <div>
+      <div class="media-stat-num">1.4M+</div>
+      <div class="media-stat-label">Influencer Reach</div>
+    </div>
+    <div>
+      <div class="media-stat-num">3.2x</div>
+      <div class="media-stat-label">ROAS Delivered</div>
+    </div>
+  </div>
+</section>
+<section id="campaigns">
+  <div class="reveal">
+    <p class="section-eyebrow">Campaign Highlights</p>
+    <h2 class="section-title">Work that speaks<br>for <em>itself.</em></h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="campaigns-grid reveal">
+
+    <div class="campaign-card featured">
+      <div class="featured-left">
+        <p class="campaign-num">01</p>
+        <h3 class="campaign-title" style="color: var(--warm-white); font-size: clamp(1.3rem, 2.5vw, 2rem);">Pre-Opening Launch — India's First Anantara</h3>
+        <p class="campaign-desc">End-to-end communications strategy for India's inaugural Anantara property. From positioning narrative to international media outreach, FAM trips, brand guardianship, and the full digital-to-print campaign architecture. Built the story of Jaipur's most talked-about hotel from a blank page.</p>
+        <div class="campaign-metrics">
+          <div>
+            <div class="campaign-metric">27+</div>
+            <div class="campaign-metric-label">PR Placements</div>
+          </div>
+          <div>
+            <div class="campaign-metric">6</div>
+            <div class="campaign-metric-label">Countries Reached</div>
+          </div>
+          <div>
+            <div class="campaign-metric">3.2x</div>
+            <div class="campaign-metric-label">ROAS Delivered</div>
+          </div>
+        </div>
+      </div>
+      <div class="featured-right">
+        <span class="timeline-badge" style="color: rgba(245,240,232,0.5); border-color: rgba(201,169,110,0.2);">Brand Strategy</span>
+        <span class="timeline-badge" style="color: rgba(245,240,232,0.5); border-color: rgba(201,169,110,0.2);">Global Media</span>
+        <span class="timeline-badge" style="color: rgba(245,240,232,0.5); border-color: rgba(201,169,110,0.2);">Pre-Opening</span>
+        <p style="margin-top:2rem; font-size: 0.9rem; color: rgba(245,240,232,0.45); line-height:1.8;">Placements secured in Condé Nast Traveller India, T+L India, Vogue India, GQ India, AD India, Robb Report, Outlook Traveller, and international outlets across 6 countries — building sustained media relationships that continue to deliver coverage.</p>
+      </div>
+    </div>
+
+    <div class="campaign-card">
+      <p class="campaign-num">02</p>
+      <h3 class="campaign-title">Fashion Events & Luxury Brand Collaborations</h3>
+      <p class="campaign-desc">Hosted Fashion Connect at Anantara Jewel Bagh — a marquee fashion event historically held at Fairmont and Rambagh Palace — signalling the property's arrival in Jaipur's luxury cultural calendar. Collaborated with celebrated designers including Ridhi Mehra, Anita Dongre, and Arita Mehta, and produced a Manifest cover shoot at the property.</p>
+      <div class="campaign-metrics">
+        <div>
+          <div class="campaign-metric">1.4M+</div>
+          <div class="campaign-metric-label">Influencer Reach</div>
+        </div>
+      </div>
+      <a href="https://www.instagram.com/reel/DWoLRdzkgb4/" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:0.5rem; margin-top:1.5rem; font-family:var(--mono); font-size:0.55rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); text-decoration:none; border-bottom:1px solid rgba(201,169,110,0.3); padding-bottom:2px;">▶ Watch on Instagram</a>
+    </div>
+
+    <div class="campaign-card">
+      <p class="campaign-num">03</p>
+      <h3 class="campaign-title">HSBC Golf Tournament × Anantara Jaipur</h3>
+      <p class="campaign-desc">Partnered with the HSBC Golf Tournament to promote Anantara Jewel Bagh Jaipur across every city on the tournament circuit — placing the property in front of a high-net-worth, globally mobile audience at precisely the right moments.</p>
+      <div style="margin-top: 1.5rem;">
+        <span class="timeline-badge" style="font-size:0.5rem;">Sponsorship</span>
+        <span class="timeline-badge" style="font-size:0.5rem;">Multi-City Activation</span>
+        <span class="timeline-badge" style="font-size:0.5rem;">HNW Audience</span>
+      </div>
+    </div>
+
+    <div class="campaign-card">
+      <p class="campaign-num">04</p>
+      <h3 class="campaign-title">Jaipur Rugs Foundation Partnership</h3>
+      <p class="campaign-desc">Introduced and built the Jaipur Rugs Foundation partnership for the property — launching it on Women's Day and integrating it as one of the Anantara Jewel Luxe Club's signature guest experiences. Also supported PR for the Foundation's <em>Pehchaan</em> and <em>Aayna</em> campaigns, securing verified placements across 6 countries.</p>
+      <div style="margin-top: 1.5rem;">
+        <span class="timeline-badge" style="font-size:0.5rem;">Partnerships</span>
+        <span class="timeline-badge" style="font-size:0.5rem;">Cultural Programming</span>
+        <span class="timeline-badge" style="font-size:0.5rem;">International PR</span>
+      </div>
+      <a href="http://media.minorhotels.com/en-GLO/262992-anantara-jewel-bagh-jaipur-announces-cultural-partnership-with-jaipur-rugs-foundation-to-empower-women-weavers-of-rajasthan/" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:0.5rem; margin-top:1.5rem; font-family:var(--mono); font-size:0.55rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); text-decoration:none; border-bottom:1px solid rgba(201,169,110,0.3); padding-bottom:2px;">↗ Read Press Release</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="reveal">
+    <p class="section-eyebrow">Expertise</p>
+    <h2 class="section-title">What I bring<br>to the <em>table.</em></h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="skills-layout reveal">
+    <div>
+      <p class="skill-category-title">Marketing & Brand</p>
+      <div class="skill-item"><span class="skill-name">Luxury Brand Positioning</span><div class="skill-bar"><div class="skill-fill" data-width="95"></div></div></div>
+      <div class="skill-item"><span class="skill-name">Content Strategy & Storytelling</span><div class="skill-bar"><div class="skill-fill" data-width="95"></div></div></div>
+      <div class="skill-item"><span class="skill-name">Integrated Campaign Management</span><div class="skill-bar"><div class="skill-fill" data-width="90"></div></div></div>
+      <div class="skill-item"><span class="skill-name">Pre-Opening Strategy</span><div class="skill-bar"><div class="skill-fill" data-width="90"></div></div></div>
+      <div class="skill-item"><span class="skill-name">Budget & ROI Optimisation</span><div class="skill-bar"><div class="skill-fill" data-width="85"></div></div></div>
+      <div class="skill-item"><span class="skill-name">Digital Strategy (SEO, SEM, Paid)</span><div class="skill-bar"><div class="skill-fill" data-width="85"></div></div></div>
+    </div>
+    <div>
+      <p class="skill-category-title">PR & Communications</p>
+      <div class="skill-item"><span class="skill-name">Global Media Relations</span><div class="skill-bar"><div class="skill-fill" data-width="95"></div></div></div>
+      <div class="skill-item"><span class="skill-name">Influencer Marketing</span><div class="skill-bar"><div class="skill-fill" data-width="90"></div></div></div>
+      <div class="skill-item"><span class="skill-name">Crisis Communications</span><div class="skill-bar"><div class="skill-fill" data-width="80"></div></div></div>
+      <div class="skill-item"><span class="skill-name">Stakeholder & GM Advisory</span><div class="skill-bar"><div class="skill-fill" data-width="88"></div></div></div>
+      <div class="skill-item"><span class="skill-name">Social Media Management</span><div class="skill-bar"><div class="skill-fill" data-width="90"></div></div></div>
+      <div class="skill-item"><span class="skill-name">Team Leadership & Coaching</span><div class="skill-bar"><div class="skill-fill" data-width="82"></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section id="philosophy">
+  <p class="section-eyebrow">My Philosophy</p>
+  <div class="philosophy-quote reveal">
+    "Great luxury marketing doesn't sell a room.<br>It sells the <span>feeling of arriving</span> somewhere extraordinary."
+  </div>
+  <p class="philosophy-body reveal">I believe the best hotel stories are felt before they're seen. My work lives at the intersection of editorial instinct, data-backed strategy, and genuine cultural curiosity — shaped by fashion, hospitality, and years of telling stories for brands that live at the top of their category.</p>
+  <div class="philosophy-pillars reveal">
+    <div class="pillar">
+      <p class="pillar-num">01 —</p>
+      <h3 class="pillar-title">Story Before Strategy</h3>
+      <p class="pillar-text">Every campaign starts with a human truth. What feeling does this property evoke? What story does it deserve? Strategy follows the story, not the other way around.</p>
+    </div>
+    <div class="pillar">
+      <p class="pillar-num">02 —</p>
+      <h3 class="pillar-title">Editorial Precision</h3>
+      <p class="pillar-text">Trained in fashion at NIFT, I approach every piece of communication like a Vogue editor. Every word, image, and channel choice is intentional and on-brand.</p>
+    </div>
+    <div class="pillar">
+      <p class="pillar-num">03 —</p>
+      <h3 class="pillar-title">Results That Resonate</h3>
+      <p class="pillar-text">Beautiful work that doesn't perform isn't luxury — it's indulgence. I hold both standards: campaigns that earn column inches and column figures.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BOOK REVIEWS -->
+<section id="reviews" style="background: var(--ink);">
+  <div class="reveal">
+    <p class="section-eyebrow" style="color: var(--gold);">Reading & Writing</p>
+    <h2 class="section-title" style="color: var(--warm-white);">Books I've read.<br><em>Thoughts</em> worth sharing.</h2>
+    <div class="section-divider"></div>
+    <p style="font-size:1rem; color:rgba(245,240,232,0.5); max-width:560px; line-height:1.8; margin-bottom:3rem;">A marketer who reads thinks differently. Here are my reviews — honest, analytical, and always through the lens of brand, story, and strategy.</p>
+  </div>
+  <div class="review-grid reveal">
+
+    <a href="positioning-review.html" target="_blank" rel="noopener" class="review-card">
+      <div class="review-card-inner">
+        <p class="review-genre">Marketing · Strategy · Classic</p>
+        <h4 class="review-title">Positioning: The Battle for Your Mind</h4>
+        <p class="review-author">Al Ries & Jack Trout</p>
+        <p class="review-excerpt">The book that changed how I think about brand real estate. My full review — what it means for luxury hospitality marketing today.</p>
+        <span class="review-link">Read My Review ↗</span>
+      </div>
+    </a>
+
+    <div class="review-card review-card--coming">
+      <div class="review-card-inner">
+        <p class="review-genre">More Reviews</p>
+        <h4 class="review-title" style="font-style:italic; opacity:0.4;">Coming Soon</h4>
+        <p class="review-excerpt" style="opacity:0.3;">More reads, more perspectives. Check back soon.</p>
+      </div>
+    </div>
+
+    <div class="review-card review-card--coming">
+      <div class="review-card-inner">
+        <p class="review-genre">More Reviews</p>
+        <h4 class="review-title" style="font-style:italic; opacity:0.4;">Coming Soon</h4>
+        <p class="review-excerpt" style="opacity:0.3;">More reads, more perspectives. Check back soon.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-left reveal">
+    <p class="section-eyebrow" style="color: var(--gold);">Let's Connect</p>
+    <h2 class="contact-title">Every great<br>brand story begins<br>with a <em>conversation.</em></h2>
+    <p class="contact-sub">Ready for my next chapter. If you're building something extraordinary in luxury hospitality and need someone to help tell its story, I'd love to connect.</p>
+    <div class="contact-detail">
+      <span class="contact-detail-label">Email</span>
+      <span class="contact-detail-value"><a href="mailto:solanki.ritu17@gmail.com">solanki.ritu17@gmail.com</a></span>
+    </div>
+    <div class="contact-detail">
+      <span class="contact-detail-label">Phone</span>
+      <span class="contact-detail-value"><a href="tel:+917984922725">+91 798 492 2725</a></span>
+    </div>
+    <div class="contact-detail">
+      <span class="contact-detail-label">LinkedIn</span>
+      <span class="contact-detail-value"><a href="https://www.linkedin.com/in/ritusolankimishra/" target="_blank" rel="noopener">linkedin.com/in/ritusolankimishra</a></span>
+    </div>
+    <div class="contact-detail">
+      <span class="contact-detail-label">Based in</span>
+      <span class="contact-detail-value">Jaipur, India · Open to Relocation</span>
+    </div>
+    <div style="margin-top: 3rem;">
+      <a href="Ritu_Solanki_Resume_Marketing.pdf" download class="btn-primary">Download Full CV</a>
+    </div>
+  </div>
+  <div class="contact-right reveal">
+    <p class="section-eyebrow" style="color: var(--gold); margin-bottom: 2rem;">Send a Message</p>
+    <form class="contact-form" onsubmit="handleSubmit(event)">
+      <div class="form-group">
+        <label class="form-label">Your Name</label>
+        <input type="text" class="form-input" placeholder="How shall I address you?" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Organisation</label>
+        <input type="text" class="form-input" placeholder="Hotel group or company">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email Address</label>
+        <input type="email" class="form-input" placeholder="your@email.com" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Message</label>
+        <textarea class="form-textarea" placeholder="Tell me about the opportunity..." required></textarea>
+      </div>
+      <button type="submit" class="form-submit">Send Message →</button>
+      <p id="form-msg" style="font-family: var(--mono); font-size:0.6rem; letter-spacing:0.2em; color: var(--gold); margin-top:0.5rem; opacity:0; transition:opacity 0.4s;"></p>
+    </form>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <a href="#hero" class="footer-logo">Ritu Solanki</a>
+  <p class="footer-copy">© 2025 · All rights reserved</p>
+  <div class="footer-links">
+    <a href="https://www.linkedin.com/in/ritusolankimishra/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="mailto:solanki.ritu17@gmail.com">Email</a>
+    <a href="Ritu_Solanki_Resume_Marketing.pdf" download>CV Download</a>
+  </div>
+</footer>
+
+<script>
+  // Loader
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.getElementById('loader').classList.add('hidden');
+    }, 2800);
+  });
+
+  // Nav scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Cursor
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    cursor.style.transform = `translate(${mx - 6}px, ${my - 6}px)`;
+  });
+  function animateRing() {
+    rx += (mx - rx - 20) * 0.15;
+    ry += (my - ry - 20) * 0.15;
+    ring.style.transform = `translate(${rx}px, ${ry}px)`;
+    requestAnimationFrame(animateRing);
+  }
+  animateRing();
+
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Skill bars animate on scroll
+  const skillObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.querySelectorAll('.skill-fill').forEach(fill => {
+          fill.style.width = fill.dataset.width + '%';
+        });
+        skillObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.skills-layout').forEach(el => skillObs.observe(el));
+
+  // Form submit
+  function handleSubmit(e) {
+    e.preventDefault();
+    const msg = document.getElementById('form-msg');
+    msg.textContent = 'Message sent — I\'ll be in touch soon.';
+    msg.style.opacity = '1';
+    e.target.reset();
+    setTimeout(() => msg.style.opacity = '0', 4000);
+  }
+
+  // Hover cursor expand on links
+  document.querySelectorAll('a, button, .brand-card, .campaign-card, .pillar').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      ring.style.width = '70px'; ring.style.height = '70px';
+      ring.style.transform = `translate(${rx - 15}px, ${ry - 15}px)`;
+    });
+    el.addEventListener('mouseleave', () => {
+      ring.style.width = '40px'; ring.style.height = '40px';
+    });
+  });
+</script>
+</body>
+</html>
